@@ -68,6 +68,6 @@ O projeto atende integralmente às especificações mínimas, com foco em semân
 
 ---
 
-## 👨‍💻 Autor
+## 👨‍💻 Autor(a)
 
 Viviane Oliveira Soares
