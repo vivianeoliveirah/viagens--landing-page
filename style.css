@@ -1,0 +1,123 @@
+/* Variáveis CSS */
+:root {
+    --brand: #3b82f6; /* Azul */
+    --bg: #f9fafb; /* Fundo claro */
+    --surface: #ffffff; /* Fundo de seção alternativa */
+    --muted: #6b7280; /* Texto secundário */
+    --radius: 8px;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+/* Reset & base */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Poppins', sans-serif; margin: 0; line-height: 1.6; color: #1f2937; background: var(--bg); }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; }
+h1, h2, h3 { line-height: 1.1; }
+.container { max-width: 1200px; margin-inline: auto; padding-inline: 1rem; }
+ul { list-style: none; padding: 0; margin: 0; }
+
+/* Acessibilidade */
+.skip-link { position: absolute; top: -40px; left: 0; background: var(--brand); color: #fff; padding: 8px; z-index: 1000; }
+.skip-link:focus { top: 0; }
+
+/* Topbar */
+.topbar { background: #fff; box-shadow: var(--shadow); position: sticky; top: 0; z-index: 50; }
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; }
+.brand { font-size: 1.5rem; font-weight: 700; color: var(--brand); }
+.main-nav ul { display: flex; gap: 1.5rem; }
+.nav-link { font-weight: 600; padding: .5rem 0; position: relative; transition: color .2s ease; }
+.nav-link:hover, .nav-link:focus { color: var(--brand); }
+/* Efeito de sublinhado nos links (mínimo de estilo) */
+.nav-link::after { content: ""; position: absolute; left: 0; bottom: 0; width: 100%; height: 3px; background: var(--brand); transform: scaleX(0); transition: transform .25s ease; }
+.nav-link.is-active::after, .nav-link:hover::after, .nav-link:focus::after { transform: scaleX(1); }
+.nav-link.is-active { color: var(--brand); }
+
+
+/* Banner Hero (Imagem de fundo e overlay) */
+.hero {
+    background-image:
+        linear-gradient(to bottom, rgba(2,6,23,.45), rgba(2,6,23,.55)),
+        url("https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80&w=1600&auto=format&fit=crop"); /* Imagem de Vilarejo/Viagem */
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+}
+.hero-overlay { text-align: center; padding: clamp(4rem, 10vw, 8rem) 1rem; }
+.hero-overlay h1 { font-size: clamp(2.5rem, 4vw + 1rem, 4rem); margin: 0 0 .75rem; font-weight: 700; }
+.hero-overlay h1 span { color: #bfdbfe; }
+.hero-overlay p { max-width: 62ch; margin-inline: auto; color: #e5e7eb; }
+.hero-cta { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+
+/* Buttons & links (Hover obrigatório) */
+.btn {
+    display: inline-block; padding: .75rem 1.5rem; border-radius: 999px;
+    background: var(--brand); color: #fff; font-weight: 600; box-shadow: var(--shadow);
+    transition: transform .2s ease, background .25s ease, box-shadow .25s ease; /* Transition para mudar aparência */
+}
+.btn:hover, .btn:focus { 
+    transform: translateY(-2px); /* Efeito sutil de levantar */
+    background: #2563eb; /* Cor mais escura no hover */
+    outline: none; 
+}
+.btn:focus-visible { box-shadow: 0 0 0 3px #bfdbfe; }
+.btn-outline { background: transparent; color: #fff; border: 2px solid #fff; }
+.btn-outline:hover, .btn-outline:focus { background: rgba(255,255,255,.12); }
+
+.btn-link { color: var(--brand); font-weight: 600; position: relative; }
+.btn-link::after { content: ""; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px; background: currentColor; transform: scaleX(0); transform-origin: left; transition: transform .25s ease; }
+.btn-link:hover::after, .btn-link:focus::after { transform: scaleX(1); }
+
+
+/* Sections */
+.section { padding: clamp(3rem, 6vw, 5rem) 0; background: var(--bg); }
+.section-alt { background: var(--surface); }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head h2 { font-size: clamp(1.75rem, 3vw + 1rem, 2.5rem); margin: 0 0 .5rem; }
+.section-head p { color: var(--muted); margin: 0; max-width: 70ch; margin-inline: auto; }
+
+
+/* Cards (TripMe) */
+.cards { display: grid; grid-template-columns: repeat(1, 1fr); gap: 1.5rem; }
+.card { background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.card img { aspect-ratio: 16 / 10; object-fit: cover; }
+.card-body { padding: 1.25rem; }
+.card-body h3 { margin: 0 0 .5rem; font-size: 1.35rem; }
+.card-body p { margin: 0 0 1rem; color: #374151; }
+
+@media (min-width: 700px) {
+    .cards { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px) {
+    .cards { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* MeetUs (About grid) */
+.about { display: grid; gap: 1.5rem; }
+.about-item { text-align: center; background: #fff; border: 1px solid #e5e7eb; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); }
+.about-item img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--brand); }
+
+@media (min-width: 800px) {
+    .about { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* Advice (Tips) */
+.tips { display: grid; gap: 1.5rem; }
+.tip { padding: 1.5rem; border-left: 4px solid var(--brand); background: #fff; border-radius: var(--radius); box-shadow: var(--shadow); }
+.tip h3 { margin-top: 0; color: var(--brand); }
+
+@media (min-width: 800px) {
+    .tips { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+/* Footer */
+.site-footer { background: #0b1220; color: #cbd5e1; padding: 2rem 0; }
+.footer-wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.footer-link { padding: .35rem .5rem; border-radius: 8px; transition: background .2s ease, color .2s ease; }
+.footer-link:hover, .footer-link:focus { 
+    background: #111827; 
+    color: #fff; 
+}
