@@ -29,6 +29,7 @@ Uma landing page responsiva e moderna desenvolvida para promover roteiros de via
 O projeto é dividido em três arquivos principais, conforme a boa prática de desenvolvimento web:
 
 viagens--landing-page
+
 ├── index.html       
 ├── style.css        
 └── script.js        
